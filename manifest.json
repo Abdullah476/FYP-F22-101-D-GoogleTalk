@@ -1,0 +1,43 @@
+{
+    "name": "Google Appssistant",
+    "description": "Insert Text Here",
+    "version": "1.0",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "./static/background.js"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": ["./templates/gum.html", "./templates/gum.js"],
+            "matches": ["http://*/*", "https://*/*"]
+        }
+    ],
+    "action": {
+        "default_popup": "./templates/popup.html",
+        "default_icon": { 
+            "16": "./templates/images/logo.png",
+            "32": "./templates/images/logo.png",
+            "48": "./templates/images/logo.png",
+            "128": "./templates/images/logo.png"
+        }
+    },
+    "icons": {
+        "16": "./templates/images/logo.png",
+        "32": "./templates/images/logo.png",
+        "48": "./templates/images/logo.png",
+        "128": "./templates/images/logo.png"
+    },
+    "host_permissions": [
+        "http://*/*",
+        "https://*/*",
+        "https://accounts.google.com/"
+    ],
+    "permissions": [
+        "cookies",
+        "storage",
+        "activeTab",
+        "tabs",
+        "identity",
+        "identity.email"
+    ]
+}

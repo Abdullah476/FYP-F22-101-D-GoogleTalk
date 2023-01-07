@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="../static/button.css">
+    </head>
+
+    <style>
+        /* setting up window size and applying background image to the extension window */
+        body {
+            width: 320px;
+            height: 280px;
+            background-image: url("./images/background.png");
+        }
+        /* setting up button default properties */
+        .button {
+            border: none;
+            color: white;
+            padding: 0px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-family: monospace;
+        }
+        /* Initialising two buttons with overrides */
+        .button1 {
+            position: absolute;
+            left: 134px;
+            bottom: 20px;
+            background-color: #3DFF44;
+            color: black;
+        } /* #B60000 */
+    </style>
+
+    <body style="text-align:center; margin: 0px;">
+        <h1 style="font-family:verdana;">Google Appsistant</h1>
+        <p id="loggedIn">Current User Email: none</p>
+        <br>
+        <h3 id="response">Say a command to get its response</h3>
+
+        <div class="buttons">
+            <button id="butn" class="button button1">START</button>
+            <audio id="placeholder"></audio>
+        </div>
+
+        <script defer src="../static/popup.js"></script>
+    </body>
+</html>
