@@ -20,7 +20,7 @@ Please follow this before you proceed with the "How to run" section:
 Follow these guidelines to ensure a smooth launch to the Chrome extension:
 1. Ensure that you extract the contents of the files and folders exclusively in a folder (you can name it anything).
 2. Create a folder called "speech_model" and place the speech model folder inside it, and name that folder "model-medium".
-    2.1. I used the VOSK English model with Dynamic Graph (Link: https://alphacephei.com/vosk/), but you can change the code to include any other speech model you prefer.
+    2.1. We used the VOSK English model with Dynamic Graph (Link: https://alphacephei.com/vosk/), but you can change the code to include any other speech model you prefer.
 3. Create another folder called "ner_model" and place the NER model folder inside it, and name that folder "model-last" (base model is from Spacy, using 'en_web_core_lg' module, trained on a custom dataset of ours).
 4. Open up Chrome (or any other Chromium-based browser) and navigate to the Extensions settings.
 5. There should be a "Developer Mode" tab. Enable it.
