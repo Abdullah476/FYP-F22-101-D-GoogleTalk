@@ -8,6 +8,12 @@ Google Talk is a Chromium-based extension that provides accessibility options to
 
 The user can record their command as voice input, which is recorded and sent from the extension to the server. There, the server picks the audio file to convert it into text format, and the text is deciphered to extract relevant and desired information. This information is further used to determine the legibility of the command and either perform the operation by communicating with the Google APIs if the command is understood or inform the user the command is insufficient/invalid if the command is not understood. In this manner, the user doesn’t need to have prior knowledge to use the certain Google Application to perform the specific task.
 
+# Prerequisites
+
+Please follow this before you proceed with the "How to run" section:
+1. Create a Service Account Key on your Google Cloud Platform: (https://console.cloud.google.com/apis/dashboard).
+    1.1. Make sure that the Google Forms and Google Drive APIs are enabled in your project.
+
 # How to run
 
 Follow these guidelines to ensure a smooth launch to the Chrome extension:
