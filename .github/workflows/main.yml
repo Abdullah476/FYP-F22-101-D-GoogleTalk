@@ -1,12 +1,12 @@
-namee: FYP-F22-101-D-GoogleTalk
+name: FYP-F22-101-D-GoogleTalk
 
 on:
   push:
-  branches: [ main ]
+    branches: [ main ]
   
 jobs:
   build:
-  runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.9.16
