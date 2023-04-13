@@ -1,3 +1,4 @@
+![Python application test with Github Actions](https://github.com/Abdullah476/FYP-F22-101-D-GoogleTalk/actions/workflows/main.yml/badge.svg?branch=main) 
 # Google Talk
 
 We present to you Google Talk, the open source extension designed to automate Google Applications (such as Documents, Forms, Slides, Sheets, and so on). The entire system is designed to run by introducing a central server which will receive instructions from one or multiple users using the extension, and process on the audio input by converting the speech to text, extracting useful information from the text, and performing the operation requested by the user.
