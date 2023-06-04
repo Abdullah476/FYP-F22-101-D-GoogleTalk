@@ -29,4 +29,4 @@ Follow these guidelines to ensure a smooth launch to the Chrome extension:
 8. Either open up the folder in VSCode, or any other suitable IDE, or navigate to the folder in the terminal, and execute the python script inside "server" by the name of "server.py".
 9. Ensure that the server has launched correctly (you should get a "* Debugger is active!" prompt on the terminal).
 
-Now speak away in the Chrome Extension!
+Now speak away in the Chrome Extension!!!
