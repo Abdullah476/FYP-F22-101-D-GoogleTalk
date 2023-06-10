@@ -6,4 +6,4 @@ subprocess.call(["python", "-m", "spacy", "train", "config.cfg", "--output", "./
 
 nlp_ner = spacy.load(os.getcwd() + "/model/model-last")
 
-mlflow.spacy.save_model(nlp_ner, "./mlflow_artifacts/")
+mlflow.spacy.save_model(spacy_model=nlp_ner, artifact_path="./mlflow_artifacts/")
