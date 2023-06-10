@@ -13,7 +13,7 @@ The user can record their command as voice input, which is recorded and sent fro
 
 Please follow this before you proceed with the "How to run" section:
 1. Create a Service Account Key on your Google Cloud Platform: (https://console.cloud.google.com/apis/dashboard).
-2. Make sure that the Google Forms and Google Drive APIs are enabled in your project.
+2. Make sure that the Google Forms, Google Sheets, and Google Drive APIs are enabled in your project.
 3. Download the service account key as a JSON file and place it in the **google_apis** folder by the name of "service_account_credentials.json" 
 
 # How to run
