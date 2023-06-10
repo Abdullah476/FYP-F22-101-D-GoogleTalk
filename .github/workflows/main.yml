@@ -1,9 +1,7 @@
-name: FYP-F22-101-D-GoogleTalk
-
-on:
-  push:
-    branches: [ main ]
-  
+name: F22-101-D-GoogleTalk 
+on: 
+  pull_request:
+    branches: [ main ] 
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,6 +10,7 @@ jobs:
     - name: Set up Python 3.9.16
       uses: actions/setup-python@v1
       with:
-        python-version: 3.8.16
+        python-version: 3.9.16
     - name: Install dependencies
-      run: make install 
+      run: |
+        make install
