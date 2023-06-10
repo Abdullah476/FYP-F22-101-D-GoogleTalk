@@ -4,7 +4,7 @@ WORKDIR /
 
 COPY . .
 
-RUN pip install -r requirements.txt
+RUN make install
 
 EXPOSE 8086
 
