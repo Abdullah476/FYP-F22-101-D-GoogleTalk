@@ -10,7 +10,7 @@ pipeline {
         stage('Pull Raw Data From Remote using DVC') {
             steps {
                 script{
-                    withCredentials([file(credentialsId: 'GDRIVE_CREDENTIALS_DATA', variable: 'GDRIVE_CREDENTIALS_DATA')]){
+                    withCredentials([string(credentialsId: 'GDRIVE_CREDENTIALS_DATA', variable: 'GDRIVE_CREDENTIALS_DATA')]){
                         bat "dvc remote modify drive gdrive_use_service_account true"
                         bat "dvc pull annotations.json"
                     }
