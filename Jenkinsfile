@@ -10,7 +10,8 @@ pipeline {
         stage('Pull Raw Data From Remote using DVC') {
             steps {
                 script{
-                    
+                    bat "dvc remote modify drive gdrive_use_service_account true"
+                    bat "dvc pull annotations.json"
                 }
             }
         }
@@ -18,7 +19,8 @@ pipeline {
         stage('Process Raw Data') {
             steps {
                 script{
-                    
+                    bat "conda activate base"
+                    bat "python process_data.py"
                 }
             }
         }
@@ -26,7 +28,7 @@ pipeline {
         stage('Train ML Model') {
             steps {
                 script{
-                    
+                    bat "python train.py"
                 }
             }
         }
@@ -34,10 +36,16 @@ pipeline {
         stage('Build Image and Push to DockerHub') {
             steps {
                 script{
-                    dockerImage = docker.build("abdullahajaz/i190476_i190695_mlops_a2:latest")
+                    dockerImage = docker.build("abdullahajaz/FYP:latest")
+                    if(dockerImage){
+                        withDockerRegistry([credentialsId: "dockerhub", url: ""]) {
+                            dockerImage.push()
+                        }
+                    }else{
+                        error "Docker image build failed."
+                    }
                 }
             }
-        }
-        
+        } 
     }
 }
