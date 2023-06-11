@@ -10,6 +10,10 @@ COPY ./model-last ./server/ner_model/model-last
 
 RUN mkdir ./server/speech_model
 
+COPY requirements.txt ./requirements.txt
+
+COPY Makefile ./Makefile
+
 RUN make install
 
 EXPOSE 8086
