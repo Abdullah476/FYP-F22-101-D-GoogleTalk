@@ -18,44 +18,44 @@ pipeline {
             }
         }
         
-        stage('Process Raw Data') {
-            steps {
-                script{
-                    bat "conda activate base"
-                    bat "python process_data.py"
-                }
-            }
-        }
+//         stage('Process Raw Data') {
+//             steps {
+//                 script{
+//                     bat "conda activate base"
+//                     bat "python process_data.py"
+//                 }
+//             }
+//         }
         
-        stage('Train ML Model') {
-            steps {
-                script{
-                    bat "python train.py"
-                }
-            }
-        }
+//         stage('Train ML Model') {
+//             steps {
+//                 script{
+//                     bat "python train.py"
+//                 }
+//             }
+//         }
                          
-        stage('Build Image and Push to DockerHub') {
-            steps {
-                script{
-                    dockerImage = docker.build("abdullahajaz/FYP:latest")
-                    if(dockerImage){
-                        withDockerRegistry([credentialsId: "dockerhub", url: ""]) {
-                            dockerImage.push()
-                        }
-                    }else{
-                        error "Docker image build failed."
-                    }
-                }
-            }
-        } 
+//         stage('Build Image and Push to DockerHub') {
+//             steps {
+//                 script{
+//                     dockerImage = docker.build("abdullahajaz/FYP:latest")
+//                     if(dockerImage){
+//                         withDockerRegistry([credentialsId: "dockerhub", url: ""]) {
+//                             dockerImage.push()
+//                         }
+//                     }else{
+//                         error "Docker image build failed."
+//                     }
+//                 }
+//             }
+//         } 
         
-        stage('Deploy the Docker Container') {
-            steps {
-                script{
-                    bat "docker run -d -p 8086:8086 abdullahajaz/FYP:latest"
-                }
-            }
-        }
+//         stage('Deploy the Docker Container') {
+//             steps {
+//                 script{
+//                     bat "docker run -d -p 8086:8086 abdullahajaz/FYP:latest"
+//                 }
+//             }
+//         }
     }
 }
