@@ -17,7 +17,6 @@ pipeline {
                 }
             }
         }
-    }
 }
         
 //         stage('Process Raw Data') {
