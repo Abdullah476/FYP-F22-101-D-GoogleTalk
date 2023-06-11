@@ -21,7 +21,7 @@ if not spacy.util.is_package("en_core_web_lg"):
 nlp = spacy.blank("en") # Load a new SpaCy model (by default, it loads the "en_core_web_lg" library which is more expansive and accurate but storage-costly)
 db = DocBin() # Create a DocBin object for storing the trained model
 
-fTrain = open("annotationsTrain.json", encoding="utf-8")
+fTrain = open("annotations.json", encoding="utf-8")
 train_data = json.load(fTrain)
 fTrain.close()
 for text, annot in tqdm(train_data['annotations']):
@@ -37,7 +37,7 @@ for text, annot in tqdm(train_data['annotations']):
     db.add(doc)
 db.to_disk("./training_data.spacy") # Save the DocBin object
 
-fVal = open("annotationsVal.json", encoding="utf-8")
+fVal = open("annotations.json", encoding="utf-8")
 val_data = json.load(fVal)
 fTrain.close()
 for text, annot in tqdm(val_data['annotations']):
