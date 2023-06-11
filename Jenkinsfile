@@ -51,7 +51,7 @@ pipeline {
         stage('Deploy the Docker Container') {
             steps {
                 script{
-                    bat "docker run -d -p 8090:8090 abdullahajaz/FYP:latest"
+                    bat "docker run -d -p 8086:8086 abdullahajaz/FYP:latest"
                 }
             }
         }
