@@ -11,7 +11,6 @@ pipeline {
             steps {
                 script{
                     withCredentials([file(credentialsId: 'GDRIVE_CREDENTIALS_DATA', variable: 'GDRIVE_CREDENTIALS_DATA')]){
-                        bat "python --version"
                         bat "dvc remote modify drive gdrive_use_service_account true"
                         bat "dvc pull annotations.json"
                     }
