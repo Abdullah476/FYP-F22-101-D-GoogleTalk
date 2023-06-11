@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-        PATH = "C:\\WINDOWS\\SYSTEM32;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\Users\\Computer\\anaconda3\\Scripts;C:\\Program Files\\Git\\bin;C:\\Program Files\\Git\\cmd"
+        PATH = "C:\\WINDOWS\\SYSTEM32;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\Users\\Computer\\anaconda3;C:\\Users\\Computer\\anaconda3\\Scripts;C:\\Program Files\\Git\\bin;C:\\Program Files\\Git\\cmd"
     }
 
     stages {  
