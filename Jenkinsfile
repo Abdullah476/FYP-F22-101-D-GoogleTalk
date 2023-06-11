@@ -30,23 +30,7 @@ pipeline {
                 }
             }
         }
-        
-        stage('Stage ML Model using DVC') {
-            steps {
-                script{
-                    
-                }
-            }
-        }
-        
-        stage('Sync Changes on GitHub') {
-            steps {
-                script{
-                    
-                }
-            }
-        }
-                
+                        
         stage('Build Image and Push to DockerHub') {
             steps {
                 script{
