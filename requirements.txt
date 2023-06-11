@@ -14,4 +14,6 @@ requests==2.28.1
 regex==2022.7.9
 google-auth-oauthlib==0.7.0
 google-auth-httplib2==0.1.0
-mlflow
+mlflow==2.3.1
+dvc==2.56.0
+dvc-gdrive==2.19.2
