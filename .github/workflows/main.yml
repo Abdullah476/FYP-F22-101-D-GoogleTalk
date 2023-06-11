@@ -1,13 +1,28 @@
 name: F22-101-D-GoogleTalk 
 on: 
   push:
-    branches: [ main ] 
+    branches: [ i190695, i190476, i190441 ]
+  pull_request:
+    types: [ closed ]
+    branches: [ main ]
 jobs:
-  build:
+  build_on_push:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.9.16
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.9.16
+    - name: Install dependencies
+      run: |
+        make install
+  build_on_pull_request:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
       uses: actions/setup-python@v1
       with:
         python-version: 3.9.16
