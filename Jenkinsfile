@@ -27,13 +27,13 @@ pipeline {
             }
         }
         
-//         stage('Train ML Model') {
-//             steps {
-//                 script{
-//                     bat "python train.py"
-//                 }
-//             }
-//         }
+        stage('Train ML Model') {
+            steps {
+                script{
+                    bat "python train.py"
+                }
+            }
+        }
                          
         stage('Build Image and Push to DockerHub') {
             steps {
