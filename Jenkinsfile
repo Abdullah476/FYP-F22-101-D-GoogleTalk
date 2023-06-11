@@ -17,17 +17,19 @@ pipeline {
                 }
             }
         }
+        
+        
+        stage('Process Raw Data') {
+            steps {
+                script{
+                    bat "python process_data.py"
+                }
+            }
+        }
+        
     }
 }
         
-//         stage('Process Raw Data') {
-//             steps {
-//                 script{
-//                     bat "conda activate base"
-//                     bat "python process_data.py"
-//                 }
-//             }
-//         }
         
 //         stage('Train ML Model') {
 //             steps {
