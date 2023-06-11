@@ -32,7 +32,7 @@ pipeline {
                 }
             }
         }
-                        
+                         
         stage('Build Image and Push to DockerHub') {
             steps {
                 script{
@@ -47,5 +47,13 @@ pipeline {
                 }
             }
         } 
+        
+        stage('Deploy the Docker Container') {
+            steps {
+                script{
+                    bat "docker run -d -p 8090:8090 abdullahajaz/FYP:latest"
+                }
+            }
+        }
     }
 }
