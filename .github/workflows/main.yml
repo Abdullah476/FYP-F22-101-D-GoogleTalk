@@ -1,7 +1,7 @@
 name: F22-101-D-GoogleTalk 
 on: 
   push:
-    branches: [ main ] 
+    branches: [ i190695 ]
 jobs:
   build:
     runs-on: ubuntu-latest
