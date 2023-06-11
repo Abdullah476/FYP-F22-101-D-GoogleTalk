@@ -27,10 +27,6 @@ pipeline {
             }
         }
         
-    }
-}
-        
-        
 //         stage('Train ML Model') {
 //             steps {
 //                 script{
@@ -39,25 +35,30 @@ pipeline {
 //             }
 //         }
                          
-//         stage('Build Image and Push to DockerHub') {
-//             steps {
-//                 script{
-//                     dockerImage = docker.build("abdullahajaz/FYP:latest")
-//                     if(dockerImage){
-//                         withDockerRegistry([credentialsId: "dockerhub", url: ""]) {
-//                             dockerImage.push()
-//                         }
-//                     }else{
-//                         error "Docker image build failed."
-//                     }
-//                 }
-//             }
-//         } 
+        stage('Build Image and Push to DockerHub') {
+            steps {
+                script{
+                    dockerImage = docker.build("abdullahajaz/FYP:latest")
+                    if(dockerImage){
+                        withDockerRegistry([credentialsId: "dockerhub", url: ""]) {
+                            dockerImage.push()
+                        }
+                    }else{
+                        error "Docker image build failed."
+                    }
+                }
+            }
+        } 
         
-//         stage('Deploy the Docker Container') {
-//             steps {
-//                 script{
-//                     bat "docker run -d -p 8086:8086 abdullahajaz/FYP:latest"
-//                 }
-//             }
-//         }
+        stage('Deploy the Docker Container') {
+            steps {
+                script{
+                    bat "docker run -d -p 8086:8086 abdullahajaz/FYP:latest"
+                }
+            }
+        }
+    }
+}
+        
+        
+
