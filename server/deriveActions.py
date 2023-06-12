@@ -4,7 +4,7 @@ from google_apis import forms, sheets
 from word2number import w2n
 import re
 
-action_words = ['create', 'delete', 'add', 'insert', 'remove', 'select', 'update', 'write', 'clear', 'show', 'submit', 'enter'] # Add and Insert technically perform the same operation, but neither are technically included in the other's synonyms list
+action_words = ['create', 'delete', 'add', 'insert', 'remove', 'select', 'update', 'write', 'clear', 'protect', 'merge', 'unmerge', 'copy', 'paste', 'show', 'submit', 'enter'] # Add and Insert technically perform the same operation, but neither are technically included in the other's synonyms list
 questions = {
     'textQuestion': ['text question', 'short question', 'long question', 'paragraph question'],
     'scaleQuestion': ['scale question', 'linear scale question'],
@@ -201,12 +201,17 @@ def perform_sheets(entities):
             return sheets.clear_from_spreadsheet(_range)
         raise Exception("Please specify the range from which you wish to remove values.")
     elif operation.__eq__('protect'):
-        service = entities.get('SERVICE')
-        if service:
-            _range = entities.get('RANGE')
-            if _range:
-                pass
-        pass
+        _range = entities.get('RANGE')
+        if _range:
+            _range = range_converter(_range)
+            return sheets.protect_range(_range)
+        raise Exception("Please specify the range to protect.")
+    elif operation.__eq__('merge') or operation.__eq__('unmerge'):
+        _range = entities.get('RANGE')
+        if _range:
+            _range = range_converter(_range)
+            return sheets.merge_range(_range)
+        raise Exception("Please specify the range to protect.")
     elif operation.__eq__('select'):
         service = entities.get('SERVICE')
         if service:

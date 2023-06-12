@@ -46,7 +46,7 @@ def create_spreadsheet(title="Untitled"):
         spreadsheet = sheets_service.spreadsheets().create(body=spreadsheet, fields='spreadsheetId').execute()
         spreadsheet_id = spreadsheet['spreadsheetId']
         set_sheet_id(spreadsheet_id)
-        drive.share_file_with_user(spreadsheet_id, 'abdullahajaz51@gmail.com') # Same deal as in Forms.py
+        drive.share_file_with_user(spreadsheet_id, 'icyguy8@gmail.com') # Same deal as in Forms.py
         link = "https://docs.google.com/spreadsheets/d/" + spreadsheet_id
         webbrowser.open(link)
         return spreadsheet
@@ -142,6 +142,55 @@ def protect_range(_range, users = ['icyguy8@gmail.com']):
     except HttpError as error:
         print(f"An error occured: {error}")
         return error
+
+def merge_range(_range, merge = True):
+    global sheets_service
+    try:
+        sheets_service, _ = get_service('sheets')
+        spreadsheet_id = get_sheet_id()
+        if spreadsheet_id is None:
+            raise Exception("Please select a sheet to protect ranges in first.")
+        grid_range = range_to_grid_range(_range)
+        sheets_metadata = sheets_service.spreadsheets().get(spreadsheetId=spreadsheet_id).execute()
+        sheet_id = sheets_metadata.get('sheets','')[0].get("properties", {}).get("sheetId", 0)
+        if merge:
+            body = {
+                "requests": [{
+                    "mergeCells": {
+                        "range": { # Define range specified by the user
+                            "sheetId": sheet_id,
+                            "startRowIndex": grid_range[0],
+                            "endRowIndex": grid_range[1],
+                            "startColumnIndex": grid_range[2],
+                            "endColumnIndex": grid_range[3]
+                        },
+                        "mergeType": "MERGE_ALL"
+                    }}
+                ]
+            }
+        else:
+            body = {
+                "requests": [{
+                    "unmergeCells": {
+                        "range": { # Define range specified by the user
+                            "sheetId": sheet_id,
+                            "startRowIndex": grid_range[0],
+                            "endRowIndex": grid_range[1],
+                            "startColumnIndex": grid_range[2],
+                            "endColumnIndex": grid_range[3]
+                        }
+                    }}
+                ]
+            }
+        return sheets_service.spreadsheets().batchUpdate(spreadsheetId=spreadsheet_id, body=body).execute()
+    except HttpError as error:
+        print(f"An error occured: {error}")
+        return error
+
+
+
+def copy_cells(_range):
+    pass
 
 #######################################################
 
