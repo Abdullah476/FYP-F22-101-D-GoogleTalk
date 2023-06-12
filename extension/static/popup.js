@@ -8,7 +8,7 @@ chrome.runtime.sendMessage({ data: "handshake" }, function (response) {
   emailAddress = response.email;
 });
 
-const loggedIn = document.getElementById("loggedIn");
+// const loggedIn = document.getElementById("loggedIn");
 const audio = document.getElementById("placeholder");
 const responseTab = document.getElementById("response");
 
@@ -16,6 +16,7 @@ let chunks = [];
 let mediaRecorder;
 let button = document.getElementById("butn");
 
+// Start the recording
 const startRecording = async () => {
   const mimeType = "audio/webm;codecs=opus"; // This works for Opera GX too, apparently
   if (!MediaRecorder.isTypeSupported(mimeType)) {
@@ -43,8 +44,8 @@ const startRecording = async () => {
   mediaRecorder.start(1000);
   button.removeEventListener("click", startRecording);
   button.addEventListener("click", stopRecording);
-  button.innerText = "STOP";
-  button.style.background = "#B60000";
+  button.style.transform = "scale(1.25)";
+  button.classList.add("pulse");
 };
 
 const stopRecording = async () => {
@@ -67,11 +68,13 @@ const getLocalMediaStream = async () => {
   return mediaStream;
 };
 
+// Reset the button for recording again
 function reset() {
   button.addEventListener("click", startRecording);
   button.disabled = false;
-  button.innerText = "START";
-  button.style.background = "#3DFF44";
+  button.style.transform = "none";
+  button.classList.remove("blur");
+  button.style.cursor = "pointer";
 }
 
 function sendEmail() {
@@ -97,8 +100,10 @@ const saveFile = () => {
   sendEmail();
   responseTab.innerText = "Processing...";
   button.disabled = true;
-  button.innerText = "WAIT";
-  button.style.background = "#008CFF";
+  button.style.transform = "none";
+  button.classList.add("blur");
+  button.classList.remove("pulse");
+  button.style.cursor = "wait";
   const blob = new Blob(chunks, { type: "audio/webm" });
   chunks = [];
   var formData = new FormData();
