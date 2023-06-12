@@ -73,9 +73,9 @@ def get_service(nameOfService):
     if current_service and nameOfService is None:
         return
     global service_name
-    if "form" in nameOfService:
+    if "form" in nameOfService or "Form" in nameOfService:
         nameOfService = 'forms'
-    elif "sheet" in nameOfService:
+    elif "sheet" in nameOfService or "Sheet" in nameOfService:
         nameOfService = 'sheets'
     else:
         raise Exception("Please specify a valid service first.")
