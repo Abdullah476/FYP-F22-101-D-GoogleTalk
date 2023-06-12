@@ -52,6 +52,8 @@ def get_action(action):
         if action_word != action.lower() and action_word in synonyms:
             synonyms.remove(action_word)
     isAction = set([action.lower()]).intersection(synonyms) # Intersect and find if it is a matching action word with anyone
+    if len(synonyms) == 0 and action in action_words:
+        return action
     if not isAction:
         raise Exception("No action was specified for the operation.")
     return list(isAction)[0]
@@ -210,6 +212,8 @@ def perform_sheets(entities):
         _range = entities.get('RANGE')
         if _range:
             _range = range_converter(_range)
+            if operation.__eq__('unmerge'):
+                return sheets.merge_range(_range, False)
             return sheets.merge_range(_range)
         raise Exception("Please specify the range to protect.")
     elif operation.__eq__('select'):
