@@ -49,9 +49,9 @@ def get_action(action):
     synonyms = list(set(synonyms)) # Make each synonym in the list unique
     global action_words # Preprocessing to extract definitive action word properly
     for action_word in action_words:
-        if action_word != action and action_word in synonyms:
+        if action_word != action.lower() and action_word in synonyms:
             synonyms.remove(action_word)
-    isAction = set([action]).intersection(synonyms) # Intersect and find if it is a matching action word with anyone
+    isAction = set([action.lower()]).intersection(synonyms) # Intersect and find if it is a matching action word with anyone
     if not isAction:
         raise Exception("No action was specified for the operation.")
     return list(isAction)[0]
