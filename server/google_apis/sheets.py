@@ -46,7 +46,7 @@ def create_spreadsheet(title="Untitled"):
         spreadsheet = sheets_service.spreadsheets().create(body=spreadsheet, fields='spreadsheetId').execute()
         spreadsheet_id = spreadsheet['spreadsheetId']
         set_sheet_id(spreadsheet_id)
-        drive.share_file_with_user(spreadsheet_id, 'icyguy8@gmail.com') # Same deal as in Forms.py
+        drive.share_file_with_user(spreadsheet_id, 'abdullahajaz51@gmail.com') # Same deal as in Forms.py
         link = "https://docs.google.com/spreadsheets/d/" + spreadsheet_id
         webbrowser.open(link)
         return spreadsheet
@@ -95,7 +95,7 @@ def clear_from_spreadsheet(range_name):
         print(f"An error occurred: {error}")
         return error
 
-def protect_range(_range, users = ['icyguy8@gmail.com']):
+def protect_range(_range, users = ['abdullahajaz51@gmail.com']):
     global sheets_service
     try:
         sheets_service, _ = get_service('sheets')
